@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 
-const client = new W3CWebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+const client = new W3CWebSocket('wss://bajaj-0jzl.onrender.com');
 
 function App() {
     const [inputData, setInputData] = useState('');
@@ -38,7 +38,7 @@ function App() {
         }
 
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/bfhl`, JSON.parse(inputData));
+            const response = await axios.post('https://bajaj-0jzl.onrender.com/bfhl', JSON.parse(inputData));
             setResponseData(response.data);
             setError('');
         } catch (error) {
@@ -90,5 +90,4 @@ function App() {
         </div>
     );
 }
-
 export default App;
